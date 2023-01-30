@@ -13,33 +13,39 @@ if ($_POST['path'] == null) {
     array(
       'name' => 'rs',
       'display' => 'TermComp',
-      'dir' => './sol/hor/All22'
+      'dir' => './sol/hor/All22',
+      'extension' => 'form'
     ),
 		
     array(
       'name' => 'rs',
       'display' => 'arXiv\'20',
-      'dir' => './sol/hor/arXiv20'
+      'dir' => './sol/hor/arXiv20',
+      'extension' => 'form'
     ),
     array(
       'name' => 'rs',
       'display' => 'SCP\'18',
-      'dir' => './sol/hor/SCPex'
+      'dir' => './sol/hor/SCPex',
+      'extension' => 'form'
     ),
     array(
       'name' => 'rs',
       'display' => 'Cops',
-      'dir' => './sol/hor/Cops'
+      'dir' => './sol/hor/Cops',
+      'extension' => 'form'
     ),
     array(
       'name' => 'rs',
       'display' => 'ICFP\'17',
-      'dir' => './sol/hor/JEX'
+      'dir' => './sol/hor/JEX',
+      'extension' => 'form'
     ),
     array(
       'name' => 'rs',
       'display' => 'Polymorphic',
-      'dir' => './sol/hor/PolySOL'
+      'dir' => './sol/hor/PolySOL',
+      'extension' => 'form'
     )
   );
 
