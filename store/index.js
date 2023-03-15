@@ -104,6 +104,9 @@ export const mutations = {
   setFiles(state, files) {
     state.files = files
   },
+  addFiles(state, files) {
+    state.files = state.files.concat(files)
+  },
 
   // for variables
   clearVariables(state) {

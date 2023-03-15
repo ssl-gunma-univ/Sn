@@ -42,6 +42,8 @@ export const config = {
       text: 'Examples',
       webApiUrl: 'http://solweb.mydns.jp/webcui/sn/api/files.php',
                  //'http://localhost:80/webcui/sn/api/files.php',
+                 //GoogleDriveとサーバのフォルダの両方を使う場合
+                 //googleDriveApiUrl: 'https://script.google.com/macros/s/AKfycbwIshl56v5_mpziNSrpwuk8Uimy1_FLlA3pS5ShdSuZM5_ikCD2NegRZY4KmQotQG-qfw/exec'
     },
     variables: {
       enable: false,

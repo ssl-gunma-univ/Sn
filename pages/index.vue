@@ -54,7 +54,8 @@ export default {
   methods: {
     ...mapMutations([
       'clearConsole', 'initConsole', 'addLine',
-      'updateParam', 'setFiles', 'openDrawer', 'setWaiting',
+      'updateParam', 'setFiles', 'addFiles', 'openDrawer', 'setWaiting',
+
       'falseClickableAll']),
     ...mapActions(['initState', 'clear', 'displayExceptionMsg']),
 
@@ -124,6 +125,7 @@ export default {
     let webcui = this
 
     if (this.toolbar.hasOwnProperty('files')) {
+      //GoogleDriveとサーバ上のフォルダのどちらか片方を使う場合
       axios
       .post(this.config.features.files.webApiUrl)
       .then(function (response) {
@@ -134,6 +136,35 @@ export default {
         webcui.displayExceptionMsg('connection')
         console.error(err)
       })
+      
+      //GoogleDriveとサーバのフォルダ両方使う場合--------------------------------------
+      /*
+      if(this.config.features.files.hasOwnProperty('webApiUrl')){
+        axios
+      .post(this.config.features.files.webApiUrl)
+      .then(function (response) {
+        let result = response.data
+        webcui.addFiles(result)
+      })
+      .catch(function (err) {
+        webcui.displayExceptionMsg('connection')
+        console.error(err)
+      })
+      }
+      if(this.config.features.files.hasOwnProperty('googleDriveApiUrl')){
+        axios
+      .post(this.config.features.files.googleDriveApiUrl)
+      .then(function (response) {
+        let result = response.data
+        webcui.addFiles(result)
+      })
+      .catch(function (err) {
+        webcui.displayExceptionMsg('connection')
+        console.error(err)
+      })
+      }
+      */
+      //--------------------------------------------------------------------------------
     }
 
     if(this.config.hasOwnProperty('preprocessing')) {
