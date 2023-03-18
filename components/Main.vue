@@ -282,6 +282,6 @@ export default {
   line-height: 20px;
 }
 .monospace {
-  font-family: monospace;
+  font-family: Consolas, monospace;
 }
 </style>

@@ -125,49 +125,35 @@ export default {
     let webcui = this
 
     if (this.toolbar.hasOwnProperty('files')) {
-      //GoogleDriveとサーバ上のフォルダのどちらか片方を使う場合
-      axios
-      .post(this.config.features.files.webApiUrl)
-      .then(function (response) {
-        let result = response.data
-        webcui.setFiles(result)
-      })
-      .catch(function (err) {
-        webcui.displayExceptionMsg('connection')
-        console.error(err)
-      })
       
-      //GoogleDriveとサーバのフォルダ両方使う場合--------------------------------------
-      /*
-      if(this.config.features.files.hasOwnProperty('webApiUrl')){
+      if (this.config.features.files.hasOwnProperty('webApiUrl')) {
         axios
-      .post(this.config.features.files.webApiUrl)
-      .then(function (response) {
-        let result = response.data
-        webcui.addFiles(result)
-      })
-      .catch(function (err) {
-        webcui.displayExceptionMsg('connection')
-        console.error(err)
-      })
+          .post(this.config.features.files.webApiUrl)
+          .then(function (response) {
+            let result = response.data
+            webcui.addFiles(result)
+          })
+          .catch(function (err) {
+            webcui.displayExceptionMsg('connection')
+            console.error(err)
+          })
       }
-      if(this.config.features.files.hasOwnProperty('googleDriveApiUrl')){
+      if (this.config.features.files.hasOwnProperty('googleDriveApiUrl')) {
         axios
-      .post(this.config.features.files.googleDriveApiUrl)
-      .then(function (response) {
-        let result = response.data
-        webcui.addFiles(result)
-      })
-      .catch(function (err) {
-        webcui.displayExceptionMsg('connection')
-        console.error(err)
-      })
+          .post(this.config.features.files.googleDriveApiUrl)
+          .then(function (response) {
+            let result = response.data
+            webcui.addFiles(result)
+          })
+          .catch(function (err) {
+            webcui.displayExceptionMsg('connection')
+            console.error(err)
+          })
       }
-      */
-      //--------------------------------------------------------------------------------
+ 
     }
 
-    if(this.config.hasOwnProperty('preprocessing')) {
+    if (this.config.hasOwnProperty('preprocessing')) {
       this.config.preprocessing(webcui)
     }
 

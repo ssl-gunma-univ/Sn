@@ -1,13 +1,13 @@
 <template>
   <v-navigation-drawer
-    v-model="drawer"
-    disable-resize-watcher
-    temporary
-    app
-    :right="config.toolbarLocation === 'right'"
-    width="500"
-    :class="{ 'dark-drawer' : $vuetify.theme.dark }"
-  >
+   v-model="drawer"
+   disable-resize-watcher
+   temporary
+   app
+   :right="config.toolbarLocation === 'right'"
+   width="500"
+   :class="{ 'dark-drawer' : $vuetify.theme.dark }"
+   >
     <template v-slot:prepend>
       <v-toolbar height="50px">
         <v-toolbar-title>Files</v-toolbar-title>
@@ -90,58 +90,38 @@ export default {
 
       let vue = this
 
-      //GoogleDriveとサーバ上のフォルダのどちらか片方を使う場合
-      axios
-      .post(this.config.features.files.webApiUrl, request)
-      .then(function (response) {
-        let result = response.data
-        let fname = path.replace(file.dir + '/', '')
-        let extension = fname.substring(fname.indexOf(".")+1)
-        vue.updateParam({ key: file.name, value: { value: result , display: fname} })
-        vue.updateParam({ key: file.filename, value: { value: fname } })
-        vue.updateParam({ key: file.extension, value: { value: extension } })
-      })
-      .catch(function (err) {
-        vue.displayConnectionErrorMsg()
-        console.error(err)
-      })
-      
-      //GoogleDriveとサーバのフォルダ両方を使用する場合---------------------------------------
-      /*
-      if(!file.hasOwnProperty('folderid')){
+      if (!file.hasOwnProperty('folderid')) {
         axios
-      .post(this.config.features.files.webApiUrl, request)
-      .then(function (response) {
-        let result = response.data
-        let fname = path.replace(file.dir + '/', '')
-        let extension = fname.substring(fname.indexOf(".")+1)
-        vue.updateParam({ key: file.name, value: { value: result , display: fname} })
-        vue.updateParam({ key: file.filename, value: { value: fname } })
-        vue.updateParam({ key: file.extension, value: { value: extension } })
-      })
-      .catch(function (err) {
-        vue.displayConnectionErrorMsg()
-        console.error(err)
-      })
+          .post(this.config.features.files.webApiUrl, request)
+          .then(function (response) {
+            let result = response.data
+            let fname = path.replace(file.dir + '/', '')
+            let extension = fname.substring(fname.indexOf(".") + 1)
+            vue.updateParam({ key: file.name, value: { value: result, display: fname } })
+            vue.updateParam({ key: file.filename, value: { value: fname } })
+            vue.updateParam({ key: file.extension, value: { value: extension } })
+          })
+          .catch(function (err) {
+            vue.displayConnectionErrorMsg()
+            console.error(err)
+          })
       }
-      else{
+      else {
         axios
-      .post(this.config.features.files.googleDriveApiUrl, request)
-      .then(function (response) {
-        let result = response.data
-        let fname = path.replace(file.dir + '/', '')
-        let extension = fname.substring(fname.indexOf(".")+1)
-        vue.updateParam({ key: file.name, value: { value: result , display: fname} })
-        vue.updateParam({ key: file.filename, value: { value: fname } })
-        vue.updateParam({ key: file.extension, value: { value: extension } })
-      })
-      .catch(function (err) {
-        vue.displayConnectionErrorMsg()
-        console.error(err)
-      })
+          .post(this.config.features.files.googleDriveApiUrl, request)
+          .then(function (response) {
+            let result = response.data
+            let fname = path.replace(file.dir + '/', '')
+            let extension = fname.substring(fname.indexOf(".") + 1)
+            vue.updateParam({ key: file.name, value: { value: result, display: fname } })
+            vue.updateParam({ key: file.filename, value: { value: fname } })
+            vue.updateParam({ key: file.extension, value: { value: extension } })
+          })
+          .catch(function (err) {
+            vue.displayConnectionErrorMsg()
+            console.error(err)
+          })
       }
-      */
-      //-------------------------------------------------------------------------
     }
   }
 }
